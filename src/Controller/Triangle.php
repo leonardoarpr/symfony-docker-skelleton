@@ -10,24 +10,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class Triangle extends AbstractController
 {
-    const TYPE = 'triangle';
-
     #[Route(path: '/triangle/{a}/{b}/{c}', name: 'triangle', methods: ['GET'])]
-    public function list(float $a, float $b, float $c, GeometryCalculator $geometryService): Response
+    public function list(float $a, float $b, float $c, GeometryCalculator $geometryService, \App\Model\Triangle $triangleModel): Response
     {
-        $surface = ($b * $a) / 2;
-        $circumference = $surface * 2;
-        $geometryService->setValues(1,2);
-        $response = [
-            "type" => self::TYPE,
-            "a" => $a,
-            "b" => $b,
-            "c" => $c,
-            "surface" => $surface,
-            "circumference" => $circumference,
-            "diameters" => $geometryService->getSumDiameters()
-        ];
+        $geometryService->setValues($a,$b,$c);
+        $surface = $geometryService->getTriangleSumSurface();
+        $circumference = $geometryService->getSumTriangleCircunference($surface);
+        $triangleModel->create($a, $b, $c, $surface, $circumference);
 
-        return new JsonResponse($response);
+        return new JsonResponse($triangleModel->toArray());
     }
 }
