@@ -10,6 +10,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class Triangle extends AbstractController
 {
+    const TYPE = 'triangle';
+
     #[Route(path: '/triangle/{a}/{b}/{c}', name: 'triangle', methods: ['GET'])]
     public function list(float $a, float $b, float $c, GeometryCalculator $geometryService): Response
     {
@@ -17,7 +19,7 @@ class Triangle extends AbstractController
         $circumference = $surface * 2;
         $geometryService->setValues(1,2);
         $response = [
-            "type" => "triangle",
+            "type" => self::TYPE,
             "a" => $a,
             "b" => $b,
             "c" => $c,

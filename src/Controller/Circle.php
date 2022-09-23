@@ -10,6 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class Circle extends AbstractController
 {
+    const TYPE = 'circle';
 
     #[Route(path: '/circle/{radius}', name: 'circle', methods: ['GET'])]
     public function list(float $radius, GeometryCalculator $geometryService): Response
@@ -18,7 +19,7 @@ class Circle extends AbstractController
         $circumference = (2 * 3.14) * $radius;
         $geometryService->setValues(1,2);
         $response = [
-            "type" => "circle",
+            "type" => self::TYPE,
             "radius" => $radius,
             "surface" => $surface,
             "circumference" => $circumference,
