@@ -11,12 +11,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class Triangle extends AbstractController
 {
     #[Route(path: '/triangle/{a}/{b}/{c}', name: 'triangle', methods: ['GET'])]
-    public function list(float $a, float $b, float $c, GeometryCalculator $geometryService, \App\Model\Triangle $triangleModel): Response
+    public function list(float $a, float $b, float $c): Response
     {
-        $geometryService->setValues($a,$b,$c);
+        $geometryService = new GeometryCalculator($a, $b, $c);
         $surface = $geometryService->getTriangleSumSurface();
         $circumference = $geometryService->getSumTriangleCircunference($surface);
-        $triangleModel->create($a, $b, $c, $surface, $circumference);
+        $triangleModel = new \App\Model\Triangle($a, $b, $c, $surface, $circumference);
 
         return new JsonResponse($triangleModel->toArray());
     }

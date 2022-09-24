@@ -10,6 +10,13 @@ class Circle
     private $surface;
     private $circumference;
 
+    public function __construct(float $radius, float $surface, float $circumference)
+    {
+        $this->radius = $radius;
+        $this->surface = $surface;
+        $this->circumference = $circumference;
+    }
+
     public function create(float $radius, float $surface, float $circumference)
     {
         $this->radius = $radius;

@@ -18,11 +18,11 @@ class Triangle
     private $surface;
     private $circumference;
 
-    public function create(float $a, float $b, float $c, float $surface, float $circumference)
+    public function __construct(float $a, float $b, float $c, float $surface, float $circumference)
     {
         $this->a = $a;
         $this->b = $b;
-        $this->c = $b;
+        $this->c = $c;
         $this->surface = $surface;
         $this->circumference = $circumference;
     }

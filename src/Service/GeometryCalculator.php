@@ -8,7 +8,7 @@ class GeometryCalculator
     private $b;
     private $c;
 
-    public function setValues(float $a, float $b = 0, float $c = 0)
+    public function __construct(float $a, float $b = 0, float $c = 0)
     {
         $this->a = $a;
         $this->b = $b;

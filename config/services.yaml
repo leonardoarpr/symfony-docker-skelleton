@@ -18,10 +18,16 @@ services:
         exclude:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
+            - '../src/Services/'
             - '../src/Kernel.php'
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
-    service.geometry_calculator: # any name you want, just make it unique
-        class: App\Service\GeometryCalculator  # the class
-        arguments: [0,0]
+    # SERVICES
+    App\Service\GeometryCalculator:
+        arguments: [ 0,0,0 ]
+
+    # MODELS
+    App\Model\Circle:
+        arguments: [ 0,0,0 ]
+
+    App\Model\Triangle:
+        arguments: [ 0,0,0,0,0 ]

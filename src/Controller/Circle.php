@@ -13,12 +13,12 @@ class Circle extends AbstractController
     const TYPE = 'circle';
 
     #[Route(path: '/circle/{radius}', name: 'circle', methods: ['GET'])]
-    public function list(float $radius, GeometryCalculator $geometryService, \App\Model\Circle $circleModel): Response
+    public function list(float $radius): Response
     {
-        $geometryService->setValues($radius);
+        $geometryService =  new GeometryCalculator($radius);
         $surface = $geometryService->getSumCircleSurface();
         $circumference = $geometryService->getSumCircleCircunference();
-        $circleModel->create($radius, $surface, $circumference);
+        $circleModel = new \App\Model\Circle($radius, $surface, $circumference);
 
         return new JsonResponse($circleModel->toArray());
     }
