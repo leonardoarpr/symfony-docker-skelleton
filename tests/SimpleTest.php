@@ -28,4 +28,15 @@ final class SimpleTest extends \PHPUnit\Framework\TestCase
             'true'
         );
     }
+
+
+    public function testCircleFail(): void
+    {
+        $this->expectException(\GuzzleHttp\Exception\ServerException::class);
+
+        $client = new \GuzzleHttp\Client();
+        $client->get('http://localhost/circle/abc');
+
+        $this->fail('Exception fail');
+    }
 }
