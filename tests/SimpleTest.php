@@ -8,7 +8,7 @@ final class SimpleTest extends \PHPUnit\Framework\TestCase
     public function testCircle(): void
     {
         $client = new \GuzzleHttp\Client();
-        $response = $client->get('http://localhost/circle/3');
+        $response = $client->get('http://localhost/circle/1');
         dump(json_decode($response->getBody()));
         $this->assertEquals(
             200,

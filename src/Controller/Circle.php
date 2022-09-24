@@ -15,7 +15,7 @@ class Circle extends AbstractController
     #[Route(path: '/circle/{radius}', name: 'circle', methods: ['GET'])]
     public function list(float $radius): Response
     {
-        $geometryService =  new GeometryCalculator($radius);
+        $geometryService = new GeometryCalculator($radius);
         $surface = $geometryService->getSumCircleSurface();
         $circumference = $geometryService->getSumCircleCircunference();
         $circleModel = new \App\Model\Circle($radius, $surface, $circumference);
