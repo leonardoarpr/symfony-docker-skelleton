@@ -42,7 +42,6 @@ final class SimpleTest extends \PHPUnit\Framework\TestCase
     public function testTriangleFail($a, $b, $c): void
     {
         $this->expectException(\GuzzleHttp\Exception\ServerException::class);
-        $this->expectException(\GuzzleHttp\Exception\ServerException::class);
 
         $client = new \GuzzleHttp\Client();
         $client->get("http://localhost/triangle/$a/$b/$c");
