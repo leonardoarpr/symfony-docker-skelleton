@@ -1,7 +1,5 @@
 <?php
 
-use \App\Controller\Circle;
-
 final class SimpleTest extends \PHPUnit\Framework\TestCase
 {
 
